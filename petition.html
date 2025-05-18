@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Save the Ocean Petition</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e0f7fa;
+      color: #004d40;
+    }
+
+    .main {
+      width: 100%;
+      text-align: center;
+    }
+
+    .header {
+      background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 20px;
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.3);
+    }
+
+    .header h2 {
+      font-size: 50px;
+      margin: 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .header p {
+      font-size: 22px;
+      margin-top: 10px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.2);
+    }
+
+    .petition {
+      background-color: white;
+      padding: 40px 30px;
+      max-width: 600px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .petition h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      padding: 12px;
+      font-size: 16px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    button {
+      padding: 14px 28px;
+      font-size: 16px;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+      transform: scale(1.05);
+    }
+
+    .count-display {
+      font-size: 20px;
+      margin-top: 25px;
+      color: #00796b;
+      text-align: center;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #d0f0e8;
+      color: #00695c;
+      border-left: 5px solid #00796b;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .CleanCount {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      margin-left: 75px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="header">
+      <h2>Save the Ocean</h2>
+      <p>Join us in protecting our blue planet!</p>
+    </div>
+
+    <div class="petition">
+      <h2>Sign the Petition</h2>
+      <form onsubmit="event.preventDefault(); countPetitions();">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="e.g. Himanshu bishnoi" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="e.g. himanshu@example.com" required />
+        </div>
+        <button type="submit">Sign Petition</button>
+      </form>
+      <div class="success-message" id="successMessage">Thank you for signing the petition!</div>
+      <div class="count-display">
+        Total Signatures: <span id="displayCount">76793</span>
+      </div>
+      <div class="CleanCount">
+        We Clean 10 Kilograms of of waste from Ocean per Signature.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let counter = 76793;
+
+    function countPetitions() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const successMsg = document.getElementById("successMessage");
+
+      if (name && email) {
+        counter++;
+        document.getElementById("displayCount").innerText = counter;
+
+        successMsg.style.display = "block";
+        successMsg.innerText = `Thank you for signing, ${name}!`;
+
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+
+        setTimeout(() => {
+          successMsg.style.display = "none";
+        }, 4000);
+      }
+    }
+  </script>
+</body>
+</html>
